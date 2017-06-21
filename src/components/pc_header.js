@@ -1,9 +1,9 @@
 import React from 'react';
 import {Row, Col} from 'antd';
 import {Menu, Icon, Tabs, message, Form , Input ,Button, Checkbox, Modal} from 'antd';
-import logoimg from '../images/TalentD_03.jpg'
-import logostyles from '../css/pc.css'
-
+import logoimg from '../images/TalentD_03.jpg';
+import logostyles from '../css/pc.css';
+import 'whatwg-fetch';
 const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -34,6 +34,22 @@ class PCHeader extends React.Component  {
   };
   handleSubmit(e){
     //页面提交
+     e.preventDefault();
+     var myFetchOptions ={
+       method:'GET'
+     };
+     var forData = this.props.form.getFieldsValue();
+     console.log(forData);
+     fetch('http://newsapi.gugujiankong.com/Handler.ashx?action=register&r_userName='+forData.r_userName+'&r_password='+forData.r_password+'&r_confirm='+forData.r_confirm,myFetchOptions).
+     then(function(response) {
+              return response.json()
+            }).then(json={
+
+
+
+     });
+     message.success("请求成功！");
+     this.setModalVisible(false);
 
   };
   render() {
@@ -86,7 +102,7 @@ class PCHeader extends React.Component  {
 
                  <Tabs type="card">
                     <TabPane tab="注册" key="2">
-                       <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                       <Form onSubmit={this.handleSubmit.bind(this)}>
                           <FormItem label="账户">
                              <Input placeholder="请输入您的账号" {...getFieldProps('r_userName')}/>
                           </FormItem >
