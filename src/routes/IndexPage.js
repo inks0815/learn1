@@ -11,10 +11,10 @@ function IndexPage() {
         <MediaQuery  query='(min-device-width: 1244px)'>
              <PCIndex />
 
-        </MediaQuery >
+        </MediaQuery>
         <MediaQuery  query='(max-device-width: 1244px)'>
              <MobileIndex />
-        </MediaQuery >
+        </MediaQuery>
     </div>
 
 

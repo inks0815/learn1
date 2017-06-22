@@ -20,11 +20,18 @@ class PCHeader extends React.Component  {
       userId:0
     };
   }
+
+  componentWillMount(){
+    if(localStorage.userid!=''){
+      this.setState({hasLogined:true});
+      this.setState({userNickName:localStorage.userNickName,userId:localStorage.userid})
+    }
+  }
   setModalVisible(value){
      this.setState({modalVisible:value});
   };
   handleClick(e){
-    if(e.key="register"){
+    if(e.key=="register"){
       this.setState({current:'register'});
       this.setModalVisible(true);
     }
@@ -46,6 +53,8 @@ class PCHeader extends React.Component  {
      then(response=>response.json()).then(json=>{
 
        this.setState({userNickName:json.NickUserName,userid:json.UserId});
+       localStorage.userid=json.UserId;
+       localStorage.userNickName=json.NickUserName;
 
      });
      if(this.state.action=="login"){
@@ -64,6 +73,11 @@ class PCHeader extends React.Component  {
     }
 
   };
+  logout(){
+    localStorage.userid='';
+    localStorage.userNickName='';
+    this.setState({hasLogined:false});
+  };
   render() {
     let {getFieldDecorator}=this.props.form;
     const userShow = this.state.hasLogined
@@ -77,10 +91,10 @@ class PCHeader extends React.Component  {
         </a>
 
 
-        <Button type="ghost" htmlType="button">退出</Button>
+        <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
     </Menu.Item>
     :
-      <Menu.Item key="register" className="">
+      <Menu.Item key="register" className={logostyles.register}>
           <Icon type="appstore" />注册/登录
       </Menu.Item>;
 
@@ -103,7 +117,7 @@ class PCHeader extends React.Component  {
                       <Menu.Item key="yule"><Icon type="appstore" />娱乐</Menu.Item>
                       <Menu.Item key="tiyu"><Icon type="appstore" />体育</Menu.Item>
                       <Menu.Item key="keji"><Icon type="appstore" />科技</Menu.Item>
-                      
+
                        {userShow}
                  </Menu>
 
@@ -123,11 +137,11 @@ class PCHeader extends React.Component  {
                                 <Input placeholder="请输入您的账号"/>
                               )}
 
-                           </FormItem >
+                           </FormItem>
                            <FormItem label="密码">
                               {getFieldDecorator('password')(<Input type="password" placeholder="密码" />)}
 
-                           </FormItem >
+                           </FormItem>
 
                            <Button type="primary" htmlType="submit">登录</Button>
                         </Form>
@@ -139,15 +153,15 @@ class PCHeader extends React.Component  {
                                <Input placeholder="请输入您的账号"/>
                              )}
 
-                          </FormItem >
+                          </FormItem>
                           <FormItem label="密码">
                              {getFieldDecorator('r_password')(<Input type="password" placeholder="密码" />)}
 
-                          </FormItem >
+                          </FormItem>
                           <FormItem label="确认密码">
                              {getFieldDecorator('r_confirm')(<Input type="password" placeholder="确认密码" />)}
 
-                          </FormItem >
+                          </FormItem>
                           <Button type="primary" htmlType="submit">注册</Button>
                        </Form>
                     </TabPane>

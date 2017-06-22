@@ -21,6 +21,12 @@ class MobileHeader extends React.Component  {
     };
   };
 
+  componentWillMount(){
+    if(localStorage.userid!=''){
+      this.setState({hasLogined:true});
+      this.setState({userNickName:localStorage.userNickName,userId:localStorage.userid})
+    }
+  }
   setModalVisible(value){
      this.setState({modalVisible:value});
   };
@@ -47,7 +53,8 @@ class MobileHeader extends React.Component  {
      then(response=>response.json()).then(json=>{
 
        this.setState({userNickName:json.NickUserName,userid:json.UserId});
-
+       localStorage.userid=json.UserId;
+       localStorage.userNickName=json.NickUserName;
      });
      if(this.state.action=="login"){
        this.setState({hasLogined:true});
@@ -71,11 +78,17 @@ class MobileHeader extends React.Component  {
       }
 
     };
+    logout(e){
+      e.preventDefault();
+      localStorage.userid='';
+      localStorage.userNickName='';
+      this.setState({hasLogined:false});
+    };
   render() {
     let {getFieldDecorator}=this.props.form;
     const userShow=this.state.hasLogined?
     <Link>
-          <Icon type="inbox" />
+          <Icon type="inbox" onClick={this.logout.bind(this)}/>
     </Link>
     :
     <Icon type="setting" onClick={this.login.bind(this)}/>
@@ -103,11 +116,11 @@ class MobileHeader extends React.Component  {
                              <Input placeholder="请输入您的账号"/>
                            )}
 
-                        </FormItem >
+                        </FormItem>
                         <FormItem label="密码">
                            {getFieldDecorator('password')(<Input type="password" placeholder="密码" />)}
 
-                        </FormItem >
+                        </FormItem>
 
                         <Button type="primary" htmlType="submit">登录</Button>
                      </Form>
@@ -119,15 +132,15 @@ class MobileHeader extends React.Component  {
                             <Input placeholder="请输入您的账号"/>
                           )}
 
-                       </FormItem >
+                       </FormItem>
                        <FormItem label="密码">
                           {getFieldDecorator('r_password')(<Input type="password" placeholder="密码" />)}
 
-                       </FormItem >
+                       </FormItem>
                        <FormItem label="确认密码">
                           {getFieldDecorator('r_confirm')(<Input type="password" placeholder="确认密码" />)}
 
-                       </FormItem >
+                       </FormItem>
                        <Button type="primary" htmlType="submit">注册</Button>
                     </Form>
                  </TabPane>
