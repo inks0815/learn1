@@ -6,6 +6,7 @@
 .mobile header{
   border-bottom: 1px solid #2db7f5;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 .mobile header img{
@@ -18,4 +19,13 @@
   vertical-align: top;
   padding-left: 10px;
   color: #2db7f5;
+}
+
+.mobile header a i{
+  font-size: 2rem;
+  float: right;
+  margin-right: 0.6rem;
+  margin-top: 1.3rem;
+  color: #2db7f5;
+
 }

@@ -16,3 +16,12 @@
 .footer{
   text-align: center;
 }
+
+.register{
+float: right !important;
+
+}
+
+.register a {
+float: right !important;
+}
