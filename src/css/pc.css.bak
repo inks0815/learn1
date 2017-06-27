@@ -43,7 +43,7 @@ float: right !important;
 
 .carousel{
   margin-top: 20px;
-  width: 300px;
+  width: 400px;
   height: 200px;
   float: left;
   background-color: #2db7f5;

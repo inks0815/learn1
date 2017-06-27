@@ -22,7 +22,7 @@ export default class PCNewsContainer extends React.Component {
   <div>
      <Row>
          <Col span={2}> </Col>
-         <Col span={1} className={styles.container}></Col>
+         <Col span={2} className={styles.container}></Col>
              <div className={styles.leftContainer}>
                   <div className={styles.carousel}>
                       <Carousel autoplay>
