@@ -1,6 +1,7 @@
 import dva from 'dva';
 import './index.css';
-
+import './css/pc.css';
+import './css/mobile.css';
 // 1. Initialize
 const app = dva();
 

@@ -50,7 +50,7 @@ export default class PCNewsImageBlock extends React.Component {
     ))
 	:"没有加载到任何新闻";
     return(
-      <div className="topNewsList">
+      <div className={styles.topNewsListimage}>
           <Card>
                  <ul>
 		              {newsList}

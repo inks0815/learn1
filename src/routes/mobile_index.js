@@ -1,6 +1,7 @@
 import React from 'react';
 import MobileHeader from '../components/mobile_header';
 import MobileFooter from '../components/mobile_footer';
+import MobileList from '../components/mobile_list';
 import {Tabs} from 'antd';
 const TabPane =Tabs.TabPane;
 export default class MobileIndex extends React.Component  {
@@ -13,6 +14,7 @@ export default class MobileIndex extends React.Component  {
               <MobileHeader></MobileHeader>
               <Tabs>
                    <TabPane tab="头条" key="1">
+                       <MobileList count={20} type="top" />
                    </TabPane>
                    <TabPane tab="社会" key="2">
                    </TabPane>

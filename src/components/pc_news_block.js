@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card} from 'antd';
 import { Link } from 'dva/router';
+import styles from '../css/pc.css'
 
 export default class PCNewsBlock extends React.Component {
   constructor() {
@@ -30,11 +31,11 @@ export default class PCNewsBlock extends React.Component {
     ))
 	:"没有加载到任何新闻";
     return(
-      <div className="topNewsList">
+      <div className={styles.topNewsList}>
           <Card>
                  <ul>
 		              {newsList}
-		         </ul>
+		             </ul>
           </Card>
       </div>
     );
