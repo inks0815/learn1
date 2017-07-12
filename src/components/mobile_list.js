@@ -23,7 +23,7 @@ export default class MobileList extends React.Component {
     const newsList = news.length
     ?
     news.map((newsItem,index)=>(
-       <section key={index} className="m_article list-item special_section clearfix">
+       <section key={index} className={styles.m_article+" "+styles.special_section+" "+styles.clearfix }>
             <Link to={`details/${newsItem.uniquekey}`} target="_blank">
                 <div className={styles.m_article_img}>
                   <img alt={newsItem.title} src={newsItem.thumbnail_pic_s} />
@@ -32,10 +32,10 @@ export default class MobileList extends React.Component {
                    <div className={styles.m_article_title}>
                       <span>{newsItem.title}</span>
                    </div>
-                   <div className="m_article_desc clearfix">
-                       <div className="m_article_desc_l">
-                         <span className="m_article_channel">{newsItem.realtype}</span>
-                         <span className="m_article_time">{newsItem.date}</span>
+                   <div className={styles.m_article_desc+" "+styles.clearfix}>
+                       <div className={styles.m_article_desc_l}>
+                         <span className={styles.m_article_channel}>{newsItem.realtype}</span>
+                         <span className={styles.m_article_time}>{newsItem.date}</span>
                         </div>
                    </div>
                 </div>

@@ -87,19 +87,20 @@ class MobileHeader extends React.Component  {
   render() {
     let {getFieldDecorator}=this.props.form;
     const userShow=this.state.hasLogined?
-    <Link>
-          <Icon type="inbox" onClick={this.logout.bind(this)}/>
+    <Link to={`/usercenter`}>
+          <Icon type="inbox" />
+
     </Link>
     :
     <Icon type="setting" onClick={this.login.bind(this)}/>
     return(
       <div id="mobile" className={mobilestyles.mobile}>
           <header>
-                     <a href="/">
+                     <Link href="#">
                          <img src={logoimg} alt="logo" />
                          <span>ReactNews</span>
                          {userShow}
-                     </a>
+                     </Link>
           </header>
           <Modal title="用户中心" wrapClassName="vertical-center-modal"
                                  visible={this.state.modalVisible}

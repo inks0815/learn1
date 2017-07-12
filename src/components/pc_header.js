@@ -86,7 +86,7 @@ class PCHeader extends React.Component  {
         <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
          &nbsp;&nbsp;
 
-        <a target="_blank">
+        <a href="#/usercenter" target="_blank">
                <Button type="dashed" htmlType="button">个人中心</Button>
         </a>
 
