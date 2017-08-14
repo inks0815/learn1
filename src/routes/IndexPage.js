@@ -7,6 +7,7 @@ import { Router, Route, hashHistory } from 'dva/router';
 import MediaQuery  from 'react-responsive';
 import PCNewsDetails from '../components/pc_news_details';
 import MobileNewsDetails from '../components/mobile_news_details';
+import SheHui from '../components/shehui';
 
 function IndexPage() {
   return (
@@ -15,6 +16,7 @@ function IndexPage() {
           <Router history={hashHistory}>
           <Route path="/" component={PCIndex}></Route>
           <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>
+          <Route path="/shehui" component={SheHui}></Route>
         </Router>
 
         </MediaQuery>

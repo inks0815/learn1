@@ -14,6 +14,7 @@ export default class PCUserCenter extends React.Component  {
 
   state = {
     usercollect:'',
+    usercomments:'',
     previewVisible: false,
     previewImage: '',
     fileList: [{
@@ -30,6 +31,8 @@ export default class PCUserCenter extends React.Component  {
     };
     fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getuc&userid=1", myFetchOptions)
     .then(response => response.json()).then(json => this.setState({usercollect: json}));
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getusercomments&userid=1", myFetchOptions)
+    .then(response => response.json()).then(json => this.setState({usercomments: json}));
 
   };
 
@@ -53,11 +56,21 @@ export default class PCUserCenter extends React.Component  {
      </div>
    );
 
-   let {usercollect}=this.state;
+   let {usercollect,usercomments}=this.state;
    let ucList = usercollect.length?
    usercollect.map((uc,index)=>(
      <Card key={index} title={uc.title} extra={<Link to={`details/${uc.uniquekey}`} >查看</Link>} >
        <p>{uc.Title}</p>
+     </Card>
+   ))
+   :
+   '没有任何收藏';
+
+
+   let usercommentsList = usercomments.length?
+   usercomments.map((ucomments,index)=>(
+     <Card key={index} title={`于 ${ucomments.datetime } 评论`} extra={<Link to={`details/${ucomments.uniquekey}`} >查看</Link>} >
+       <p>{ucomments.Comments}</p>
      </Card>
    ))
    :
@@ -68,7 +81,7 @@ export default class PCUserCenter extends React.Component  {
           <div style={{ width: '80%',margin:'0 auto'}}>
               <Tabs >
                 <TabPane tab="我的收藏列表" key="1">{ucList}</TabPane>
-                <TabPane tab="我的评论列表" key="2">Content of tab 2</TabPane>
+                <TabPane tab="我的评论列表" key="2">{usercommentsList}</TabPane>
                 <TabPane tab="设置" key="3">
                   <div className="clearfix">
                     <Upload
