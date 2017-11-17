@@ -17,6 +17,7 @@ function RouterConfig({ history }) {
           <Route path="/" component={PCIndex}></Route>
           <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>
           <Route path="/usercenter" component={PCUserCenter}></Route>
+          <Route path="/shehui" component={PCUserCenter}></Route>
         </Router>
 
         </MediaQuery>

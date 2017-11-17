@@ -110,9 +110,13 @@ class PCHeader extends React.Component  {
              </Col>
              <Col span={16}>
                  <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
-                      <Menu.Item key="top"><Icon type="appstore" />头条</Menu.Item>
+                      <Menu.Item key="top">
+                          <Link to={``}>
+                             <Icon type="appstore" />头条
+                           </Link>
+                      </Menu.Item>
                       <Menu.Item key="shehui">
-                          <Link to={`shehui`} target="_blank">
+                          <Link to={`shehui`}>
                           <Icon type="appstore" />
                               社会
                            </Link>
